@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+psql -p5432 $1 -f drop_schema.sql
+psql -p5432 $1 -f schema.sql
+psql -p5432 $1 -f users.sql
+psql -p5432 $1 -f book_details.sql
+psql -p5432 $1 -f book_store.sql
+psql -p5432 $1 -f transaction_details.sql
