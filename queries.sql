@@ -37,3 +37,29 @@ select isbn from register join book_copies on book_copies.book_id = register.boo
 
 with b as (select *,to_char(issued_on,'mm-yyyy')as date from register)
 select b.email,count(b.email) from b where b.date = '01-2018' group by b.email order by count desc;
+
+
+-- 8. Show the library user(s) who are in possession of a library book for more then 15 days.
+
+select * from TRANSACTIONs r where current_date - r.issued_on > 15 and r.return_on is null;
+
+-- 9. Show the library user(s) who are in possession of more than two library books and holding atleast two of them for more then 15 days.
+
+select * from( select email,count(email) from register where current_date - issue_date > 15 and return_date is null group by email) as tb where tb.count > 2;
+
+-- 10. Show the titles that are in high demand and copies not available.
+
+with db as (
+select isbn from transactions join book_store on transactions.book_id = book_store.book_id where return_on is null)
+select * from (select isbn,count(isbn) from db group by isbn order by count desc) book join book_details on book_details.isbn = book.isbn;
+
+
+-- 11. Show the library users who returned books in 7 days time in a given period.
+
+select * from transactions where to_char(issued_on,'mm-yyyy') = '02-2017'and return_on - issued_on <=7;
+
+
+-- 12. Show the average period of holding the borrowed books that were returned in a certain period. (Eg: Jan 2018).
+
+select avg(return_on-issued_on) from transactions where to_char(issued_on,'mm-yyyy') = '02-2018';
+
