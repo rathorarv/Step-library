@@ -5,3 +5,5 @@ psql -p5432 $1 -f users.sql
 psql -p5432 $1 -f book_details.sql
 psql -p5432 $1 -f book_store.sql
 psql -p5432 $1 -f transaction_details.sql
+
+psql -v p=$PWD $1 -f data_insert.sql

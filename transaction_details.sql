@@ -10,7 +10,7 @@ CREATE TABLE transactions (
   email_id VARCHAR(50),
   issued_on DATE,
   return_on DATE,
-  comments VARCHAR(200)
+  description VARCHAR(200)
 );
 
 -- foreign key --
@@ -33,10 +33,3 @@ ALTER TABLE transactions
 
 
 -- fake data --
-
-INSERT INTO transactions VALUES
-(1,10,'veera@foobar.in','2018/03/15','2018/03/16','nice book'),
-(2,12,'chandu@foobar.in','2018/03/16','2018/03/17','awesome book'),
-(3,11,'arvind@foobar.in','2018/03/17','2018/03/18','excellent book'),
-(4,14,'aditi@foobar.in','2018/03/18','2018/03/19','interesting book'),
-(5,14,'pranav@foobar.in','2018/03/19','2018/03/20','no comment');
