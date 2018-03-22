@@ -5,8 +5,7 @@ SET search_path to step_library;
 CREATE TABLE book_store(
     book_id varchar(4),
     isbn varchar(13),
-    availibility bool,
-    transaction_id varchar(6)
+    availibility bool
 );
 
 
@@ -18,14 +17,14 @@ ALTER TABLE book_store
 ALTER TABLE book_store
   ALTER COLUMN isbn SET NOT NULL;
 
-ALTER TABLE book_store ADD CONSTRAINT un_bookid  UNIQUE(transaction_id);
+ALTER TABLE book_store ADD CONSTRAINT un_bookid  UNIQUE(book_id);
+
+ALTER TABLE book_store
+  ADD CONSTRAINT book_id_fk FOREIGN KEY (isbn) references book_details(isbn);
 
 
 
 -- primary key
-
-ALTER TABLE book_store
-  ADD CONSTRAINT bd_pk_tranid PRIMARY KEY (book_id);
 
 
 -- dump

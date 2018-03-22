@@ -10,7 +10,7 @@ CREATE TABLE transactions (
   email_id VARCHAR(50),
   issued_on DATE,
   return_on DATE,
-  description VARCHAR(200)
+  comments VARCHAR(100)
 );
 
 -- foreign key --
@@ -19,6 +19,9 @@ ALTER TABLE transactions
 
 ALTER TABLE transactions
   ADD CONSTRAINT email_id_fk FOREIGN KEY (email_id) references users(email_id);
+
+ALTER TABLE transactions
+  ADD CONSTRAINT book_id_fk FOREIGN KEY (book_id) references book_store(book_id);
 
 -- add constraints --
 
