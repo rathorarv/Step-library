@@ -20,7 +20,7 @@ select isbn,count(isbn) from (select isbn,extract (month from issued_on)from tra
 
 /* 5. Show the titles not borrowed for more than four months as of current date. */
 
-select b.title from book_details b where b.isbn not in (select isbn from transactions join book_store on book_store.book_id = transactions.book_id  where current_date - issued_on <= 120);
+select b.name from book_details b where b.isbn not in (select isbn from transactions join book_store on book_store.book_id = transactions.book_id  where current_date - issued_on <= 120);
 
 /* 6. Show the titles with more than 10 copies and not borrowed for the last 3 months. */
 
