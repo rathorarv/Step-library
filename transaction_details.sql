@@ -25,11 +25,6 @@ ALTER TABLE transactions
 
 -- add constraints --
 
-ALTER TABLE transactions
-  ALTER COLUMN book_id SET NOT NULL;
-
-ALTER TABLE transactions
-  ALTER COLUMN email_id SET NOT NULL;
 
 ALTER TABLE transactions
   ALTER COLUMN issued_on SET NOT NULL;
